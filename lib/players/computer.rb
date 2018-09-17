@@ -23,15 +23,15 @@ module Players
 
       # From here on, run through the WIN_COMBINATIONS array, checking whether any of the combinations have two squares filled with the same token and a third, empty square.
       else
-        Game::WIN_COMBINATIONS.each do |cmb|
+        Game::WIN_COMBINATIONS.each do |combo|
 
           # First, check whether you have any chances to win, since it doesn't matter whether the opponent has a chance to win if you can win first.
-          if cmb.select{|i| board.position(i+1) != " " && board.position(i+1) == token}.size == 2 && cmb.any?{|i| board.position(i+1) == " "}
+          if combo.select{|i| board.position(i+1) != " " && board.position(i+1) == token}.size == 2 && cmb.any?{|i| board.position(i+1) == " "}
             move = cmb.select{|i| !board.taken?(i+1)}.first.to_i.+(1).to_s
             binding.pry
 
           # If you can't play any winning moves, play a move to block the opponent from winning.
-        elsif  cmb.select{|i| board.position(i+1) != " " && board.position(i+1) == token}.size == 2 && cmb.any?{|i| board.position(i+1) == " "} ==false && cmb.select{|i| board.position(i+1) != " " && board.position(i+1) != token}.size == 2 && cmb.any?{|i| board.position(i+1) == " "}
+        elsif  combo.select{|i| board.position(i+1) != " " && board.position(i+1) == token}.size == 2 && cmb.any?{|i| board.position(i+1) == " "} ==false && cmb.select{|i| board.position(i+1) != " " && board.position(i+1) != token}.size == 2 && cmb.any?{|i| board.position(i+1) == " "}
             move = cmb.select{|i| !board.taken?(i+1)}.first.to_i.+(1).to_s
             binding.pry
           end

@@ -23,7 +23,7 @@ module Players
 
       # From here on, run through the WIN_COMBINATIONS array, checking whether any of the combinations have two squares filled with the same token and a third, empty square.
       else
-        Game::WIN_COMBINATIONS.find_all do |cmb|
+        Game::WIN_COMBINATIONS.each do |cmb|
 
           # First, check whether you have any chances to win, since it doesn't matter whether the opponent has a chance to win if you can win first.
           if cmb.select{|i| board.position(i+1) != " " && board.position(i+1) == token}.size == 2 && cmb.any?{|i| board.position(i+1) == " "}
@@ -35,6 +35,7 @@ module Players
             move = cmb.select{|i| !board.taken?(i+1)}.first.to_i.+(1).to_s
             binding.pry
           end
+
         end
 
         # If none of the WIN_COMBINATIONS patterns have two squares taken by the same token and a third empty square, play into the first open square you find, first checking corners and then checking sides.

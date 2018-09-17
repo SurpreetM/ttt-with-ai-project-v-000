@@ -17,8 +17,8 @@ module Players
         move = [1, 3, 7, 9].detect{|i| !board.taken?(i)}.to_s
 
       # If you went second (and took the middle) and the other player has occupied opposing corner squares, blow up the attempted trap by taking a side square.
-    elsif board.turn_count == 3 && board.taken?(1) && board.position(1) == board.position(9) || board.turn_count == 3 && board.taken?(3) && board.position(3) == board.position(7)
-        #binding.pry
+      elsif board.turn_count == 3 && board.taken?(1) && board.position(1) == board.position(9) || board.turn_count == 3 && board.taken?(3) && board.position(3) == board.position(7)
+
         move = "2"
 
       # From here on, run through the WIN_COMBINATIONS array, checking whether any of the combinations have two squares filled with the same token and a third, empty square.
@@ -28,7 +28,7 @@ module Players
           # First, check whether you have any chances to win, since it doesn't matter whether the opponent has a chance to win if you can win first.
           if cmb.select{|i| board.position(i+1) == token}.size == 2 && cmb.any?{|i| board.position(i+1) == " "}
             move = cmb.select{|i| !board.taken?(i+1)}.first.to_i.+(1).to_s
-
+            binding.pry
           # If you can't play any winning moves, play a move to block the opponent from winning.
           elsif cmb.select{|i| board.position(i+1) != " " && board.position(i+1) != token}.size == 2 && cmb.any?{|i| board.position(i+1) == " "}
             move = cmb.select{|i| !board.taken?(i+1)}.first.to_i.+(1).to_s

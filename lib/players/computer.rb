@@ -31,7 +31,7 @@ module Players
             binding.pry
 
           # If you can't play any winning moves, play a move to block the opponent from winning.
-      elsif  cmb.select{|i| board.position(i+1) != " " && board.position(i+1) != token}.size == 2 && cmb.any?{|i| board.position(i+1) == " "}
+        elsif  cmb.select{|i| board.position(i+1) != " " && board.position(i+1) == token}.size == 2 && cmb.any?{|i| board.position(i+1) == " "} ==false && cmb.select{|i| board.position(i+1) != " " && board.position(i+1) != token}.size == 2 && cmb.any?{|i| board.position(i+1) == " "}
             move = cmb.select{|i| !board.taken?(i+1)}.first.to_i.+(1).to_s
             binding.pry
           end

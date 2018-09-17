@@ -1,23 +1,28 @@
 require "pry"
 module Players
   class Computer < Player
-    def move(board)
-      move = nil
 
+    def check_win_combos
+      
       Game::WIN_COMBINATIONS.each do |combo|
-
+        move = nil
         # First, check whether you have any chances to win, since it doesn't matter whether the opponent has a chance to win if you can win first.
         if combo.select{|i| board.position(i+1) != " " && board.position(i+1) == token}.size == 2 && combo.any?{|i| board.position(i+1) == " "}
           move = combo.select{|i| !board.taken?(i+1)}.first.to_i.+(1).to_s
           binding.pry
 
-        # If you can't play any winning moves, play a move to block the opponent from winning.
+          # If you can't play any winning moves, play a move to block the opponent from winning.
         elsif  combo.select{|i| board.position(i+1) != " " && board.position(i+1) == token}.size == 2 && combo.any?{|i| board.position(i+1) == " "} ==false && cmb.select{|i| board.position(i+1) != " " && board.position(i+1) != token}.size == 2 && cmb.any?{|i| board.position(i+1) == " "}
           move = combo.select{|i| !board.taken?(i+1)}.first.to_i.+(1).to_s
           binding.pry
         end
-
       end
+      move 
+    end 
+    
+    def move(board)
+      
+      check_win_combos = 
 
       # When going first, take the middle square. When going second, take the middle square if it isn't yet taken.
       if !board.taken?(5)

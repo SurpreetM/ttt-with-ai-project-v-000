@@ -59,6 +59,7 @@ class Game
   def turn
     player = current_player
     #asks player for their move
+    puts "Turn #{board.turn_count + 1} - Player #{current_player.token} "
     move = current_player.move(board)
     if board.valid_move?(move) != true
       #this is not a valid move - ask player again for input

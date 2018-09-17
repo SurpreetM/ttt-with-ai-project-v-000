@@ -20,7 +20,7 @@ module Players
       end
 
       # When going first, take the middle square. When going second, take the middle square if it isn't yet taken.
-      elsif !board.taken?(5)
+      elsif !board.taken?(5) == false
         move = "5"
 
       # If going second and the middle square is taken, take the upper-left corner square.
@@ -37,7 +37,7 @@ module Players
 
         # If none of the WIN_COMBINATIONS patterns have two squares taken by the same token and a third empty square, play into the first open square you find, first checking corners and then checking sides.
       else move = [1, 3, 7, 9, 2, 4, 6, 8].detect{|i| !board.taken?(i)}.to_s if move == nil
-      
+
       end
       move
     end

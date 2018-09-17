@@ -35,12 +35,9 @@ module Players
       elsif board.turn_count == 3 && board.taken?(1) && board.position(1) == board.position(9) || board.turn_count == 3 && board.taken?(3) && board.position(3) == board.position(7)
         move = "2"
 
-      # From here on, run through the WIN_COMBINATIONS array, checking whether any of the combinations have two squares filled with the same token and a third, empty square.
-      else
-
-
         # If none of the WIN_COMBINATIONS patterns have two squares taken by the same token and a third empty square, play into the first open square you find, first checking corners and then checking sides.
-        move = [1, 3, 7, 9, 2, 4, 6, 8].detect{|i| !board.taken?(i)}.to_s if move == nil
+      else move = [1, 3, 7, 9, 2, 4, 6, 8].detect{|i| !board.taken?(i)}.to_s if move == nil
+      
       end
       move
     end

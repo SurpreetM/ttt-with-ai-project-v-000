@@ -2,10 +2,6 @@ require "pry"
 module Players
   class Computer < Player
 
-    def check_win_combos
-
-
-
     def move(board)
 
       # When going first, take the middle square. When going second, take the middle square if it isn't yet taken.
@@ -44,5 +40,6 @@ module Players
       end
       move
     end
+    
   end
 end

@@ -17,8 +17,8 @@ module Players
         move = [1, 3, 7, 9].detect{|i| !board.taken?(i)}.to_s
 
       # If you went second (and took the middle) and the other player has occupied opposing corner squares, blow up the attempted trap by taking a side square.
-    elsif board.taken?(1) && board.position(1) == board.position(9) || board.taken?(3) && board.position(3) == board.position(7)
-        binding.pry
+      elsif board.taken?(1) && board.position(1) == board.position(9) || board.taken?(3) && board.position(3) == board.position(7)
+        #binding.pry
         move = "2"
 
       # From here on, run through the WIN_COMBINATIONS array, checking whether any of the combinations have two squares filled with the same token and a third, empty square.

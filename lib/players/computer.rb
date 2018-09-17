@@ -20,7 +20,7 @@ module Players
       end
 
       # When going first, take the middle square. When going second, take the middle square if it isn't yet taken.
-      elsif !board.taken?(5) == false
+      if !board.taken?(5) == false
         move = "5"
 
       # If going second and the middle square is taken, take the upper-left corner square.

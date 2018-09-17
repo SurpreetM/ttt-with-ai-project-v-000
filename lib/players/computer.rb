@@ -9,7 +9,7 @@ module Players
     def move(board)
 
       # When going first, take the middle square. When going second, take the middle square if it isn't yet taken.
-      !board.taken?(5)
+      if !board.taken?(5)
         move = "5"
 
       # If going second and the middle square is taken, take the upper-left corner square.
